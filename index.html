@@ -1,0 +1,38 @@
+<html>
+<head>
+  <title>pidash-2</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+  <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
+
+</head>
+<body>
+  <h1>pidash-2</h1>
+
+  <!-- Testing -->
+  <!-- <form id=create method="post" action="update.php">
+    <input type="text" name="url">
+    <input type="submit" value="Create">
+  </form> -->
+
+  <!-- <div id=created></div> -->
+
+  <!-- Live -->
+  <div>
+    <form id="urlForm" method="post" action="./scripts/update.php">
+      <input type="text" name="url" placeholder="Enter the URL here...">
+      <div id="urlError"></div>
+      <input type="submit" name="update" value="update">
+      <input type="button" name="reboot" value="reboot" id="reboot">
+    </form>
+
+    <div id=success></div>
+
+  </div>
+
+
+  <!-- <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script> -->
+  <script src="index.js"></script>
+
+</body>
+</html>
