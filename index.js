@@ -19,7 +19,7 @@ $('#urlForm').submit(function() {
 $('#reboot').click(function(){
   $.ajax({
     type: 'POST',
-    url: 'reboot.php',
+    url: './scripts/reboot.php',
     success: function(response) {
       $('#success').html(response);
     }
