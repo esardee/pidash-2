@@ -6,4 +6,4 @@ kill $pid_iceweasel
 
 # Reload the new file...
 # [this might not work]
-sh /home/pi/fullsreen.#!/bin/sh
+# /bin/sh /home/pi/fullscreen.sh

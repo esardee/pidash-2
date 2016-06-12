@@ -18,9 +18,9 @@ if (!empty($url)) {
     fwrite($newConfig, $txt) ;
     fclose($newConfig) ;
 
-    $configdrop = shell_exec('configdump.sh');
+    // $configdrop = shell_exec('configdump.sh');
 
-    $restart = shell_exec('softboot.sh');
+    // $restart = shell_exec('softboot.sh');
 
   } else {
     // URL IS INVALID
