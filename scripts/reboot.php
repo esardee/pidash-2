@@ -1,5 +1,5 @@
 <?php
 
-// $reboot = shell_exec('sh /sbin/reboot ');
+$reboot = shell_exec('sudo /sbin/reboot ');
 
 ?>
