@@ -21,7 +21,8 @@ $('#reboot').click(function(){
     type: 'POST',
     url: './scripts/reboot.php',
     success: function(response) {
-      $('#success').html(response);
+        msg = 'Pi is rebooting, check back in a minute...';
+        $('#success').html(msg);
     }
   });
   return false;
