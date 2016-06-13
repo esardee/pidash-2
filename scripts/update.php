@@ -11,16 +11,17 @@ if (!empty($url)) {
 
     echo "The URL was $url" ;
 
-    $newConfig = fopen("fullscreen.sh", "w") or die("Unable to open file!") ;
+    $newConfig = fopen("/home/pi/fullscreen.sh", "w") or die("Unable to open file!") ;
 
-    $txt = 'unclutter &' . PHP_EOL . 'matchbox-window-manager &' . PHP_EOL . 'iceweasel ' . $url . ' --display=:0 &' . PHP_EOL . 'sleep 10s' . PHP_EOL ;
+    // $txt = 'unclutter &' . PHP_EOL . 'matchbox-window-manager &' . PHP_EOL . 'iceweasel ' . $url . ' --display=:1 &' . PHP_EOL . 'sleep 10s' . PHP_EOL ;
+
+    $txt = 'if ! pgrep "iceweasel" > /dev/null then' . PHP_EOL . 'unclutter &' . PHP_EOL . 'matchbox-window-manager &' . PHP_EOL . 'iceweasel ' . $url . ' --display=:1 &' . PHP_EOL . 'sleep 10s' . PHP_EOL . 'fi' . PHP_EOL ;
 
     fwrite($newConfig, $txt) ;
     fclose($newConfig) ;
 
-    // $configdrop = shell_exec('configdump.sh');
-
-    // $restart = shell_exec('softboot.sh');
+    $kill = shell_exec('pid_iceweasel="$(pgrep -f iceweasel)" && kill $pid_iceweasel && sleep 1s');
+    $reload = shell_exec('sh /home/pi/fullscreen.sh');
 
   } else {
     // URL IS INVALID
