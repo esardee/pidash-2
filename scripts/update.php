@@ -15,7 +15,7 @@ if (!empty($url)) {
 
     // $txt = 'unclutter &' . PHP_EOL . 'matchbox-window-manager &' . PHP_EOL . 'iceweasel ' . $url . ' --display=:1 &' . PHP_EOL . 'sleep 10s' . PHP_EOL ;
 
-    $txt = 'if ! pgrep "iceweasel" > /dev/null then' . PHP_EOL . 'unclutter &' . PHP_EOL . 'matchbox-window-manager &' . PHP_EOL . 'iceweasel ' . $url . ' --display=:1 &' . PHP_EOL . 'sleep 10s' . PHP_EOL . 'fi' . PHP_EOL ;
+    $txt = 'if ! pgrep "iceweasel" > /dev/null' . PHP_EOL . 'then' . PHP_EOL . 'unclutter &' . PHP_EOL . 'matchbox-window-manager &' . PHP_EOL . 'iceweasel ' . $url . ' --display=:1 &' . PHP_EOL . 'sleep 10s' . PHP_EOL . 'fi' . PHP_EOL ;
 
     fwrite($newConfig, $txt) ;
     fclose($newConfig) ;
