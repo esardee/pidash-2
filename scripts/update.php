@@ -11,15 +11,16 @@ if (!empty($url)) {
 
     echo "The URL was $url" ;
 
-    $newConfig = fopen("/home/pi/fullscreen.sh", "w") or die("Unable to open file!") ;
+    $newConfig = fopen("/home/pi/dashboard.sh", "w") or die("Unable to open file!") ;
 
-    $txt = '# start / restart the browser' . PHP_EOL . 'unclutter &' . PHP_EOL . 'matchbox-window-manager &' . PHP_EOL . 'iceweasel ' . $url . ' --display=:1 &' . PHP_EOL . 'sleep 10s' . PHP_EOL ;
+    $txt = '# start / restart the browser' . PHP_EOL . 'chromium-browser --display=:0 --noerrdialogs --kiosk ' . $url . ' --incognito' . PHP_EOL ;
 
     fwrite($newConfig, $txt) ;
     fclose($newConfig) ;
 
-    $kill = shell_exec('sh softboot.sh');
-    $reload = shell_exec('sh /home/pi/fullscreen.sh');
+    $kill = shell_exec('sh killchrome.sh');
+
+    $reload = shell_exec('sh /home/pi/dashboard.sh');
 
   } else {
     // URL IS INVALID
