@@ -88,7 +88,7 @@
   sudo echo 'unclutter &' >> $fspath
   sudo echo 'matchbox-window-manager &' >> $fspath
   sudo echo 'iceweasel http://pisarada.ddns.net --display=:0 &' >> $fspath
-  sudo echo 'sleep 10s'
+  sudo echo 'sleep 10s' >> $fspath
 
   # resize.sh - this maximises the browser
   rspath='/home/pi/resize.sh'

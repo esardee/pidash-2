@@ -54,13 +54,43 @@
 #     Install the things
 # ============================================================
 
-  # Update the apt-get packages
-  sudo apt-get update
-  sudo apt-get upgrade -y
+    # Update the apt-get packages
+    sudo apt-get update
+    sudo apt-get upgrade -y
 
-  # Install stuff we need
-  sudo apt-get install chromium x11-xserver-utils unclutter
+    # Install stuff we need
+    sudo apt-get install chromium x11-xserver-utils unclutter
 
+    # Install Chromium (cannot install using apt-get)
+    wget http://ports.ubuntu.com/pool/universe/c/chromium-browser/chromium-browser-l10n_48.0.2564.82-0ubuntu0.15.04.1.1193_all.deb
+    wget http://ports.ubuntu.com/pool/universe/c/chromium-browser/chromium-browser_48.0.2564.82-0ubuntu0.15.04.1.1193_armhf.deb
+    wget http://ports.ubuntu.com/pool/universe/c/chromium-browser/chromium-codecs-ffmpeg-extra_48.0.2564.82-0ubuntu0.15.04.1.1193_armhf.deb
+    sudo dpkg -i chromium-codecs-ffmpeg-extra_48.0.2564.82-0ubuntu0.15.04.1.1193_armhf.deb
+    sudo dpkg -i chromium-browser-l10n_48.0.2564.82-0ubuntu0.15.04.1.1193_all.deb chromium-browser_48.0.2564.82-0ubuntu0.15.04.1.1193_armhf.deb
+    sudo apt-get chromium-browser install -y
+
+    # Set the display for Chromium to load on. 1 is for testing, 0 is for prod.
+    export DISPLAY=:1
+
+    # If the above doesn't work, run one of the following blocks then 'sudo apt-get install chromium-browser -y' again.
+
+    # BLOCK 1 #
+    # wget -qO - http://bintray.com/user/downloadSubjectPublicKey?username=bintray | sudo apt-key add -
+    # echo "deb http://dl.bintray.com/kusti8/chromium-rpi jessie main" | sudo tee -a /etc/apt/sources.list
+
+    # BLOCK 2 #
+    # wget http://ftp.us.debian.org/debian/pool/main/libg/libgcrypt11/libgcrypt11_1.5.0-5+deb7u3_armhf.deb
+    # wget http://launchpadlibrarian.net/218525709/chromium-browser_45.0.2454.85-0ubuntu0.14.04.1.1097_armhf.deb
+    # wget http://launchpadlibrarian.net/218525711/chromium-codecs-ffmpeg-extra_45.0.2454.85-0ubuntu0.14.04.1.1097_armhf.deb
+    # sudo dpkg -i libgcrypt11_1.5.0-5+deb7u3_armhf.deb
+    # sudo dpkg -i chromium-codecs-ffmpeg-extra_45.0.2454.85-0ubuntu0.14.04.1.1097_armhf.deb
+    # sudo dpkg -i chromium-browser_45.0.2454.85-0ubuntu0.14.04.1.1097_armhf.deb
+
+    # Install kweb
+    wget http://steinerdatenbank.de/software/kweb-1.7.1.tar.gz
+    tar -xzf kweb-1.7.1.tar.gz
+    cd kweb-1.7.1
+    ./debinstall
 
 # ============================================================
 #     Modify the Startup
@@ -78,4 +108,4 @@
   sudo echo '@/home/pi/dashboard.sh' >> $autostart
 
   # The following needs to go into dashboard.sh:
-  # @chromium --noerrdialogs --kiosk http://www.page-to.display --incognito
+  # chromium-browser --noerrdialogs --kiosk http://www.page-to.display --incognito
