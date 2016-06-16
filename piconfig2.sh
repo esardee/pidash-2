@@ -21,8 +21,8 @@
 # From here, connect to the Raspbery Pi using SSH.
 # ssh pi@<ip address>
 #
-# 1. Copy all the code here into a new script (e.g. vim /home/pi/install.sh)
-# 2. Run the install script as pi: sudo -u pi sh /home/pi/install.sh
+# 1. Run the following: curl https://raw.githubusercontent.com/esardee/pidash-2/master/piconfig2.sh > /home/pi/install.sh
+# 2. Then: sudo sh /home/pi/install.sh
 
 # ============================================================
 #     Configure the internetz
@@ -139,4 +139,4 @@
     sudo chown -R pi:pi /var/www/html
 
     # This allows connections from everywhere, if this is to be publicly available this should definitely not be here.
-    xhost +
+    sudo -u pi xhost +
