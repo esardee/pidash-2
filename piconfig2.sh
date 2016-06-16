@@ -29,6 +29,7 @@
 # ============================================================
 
     # Get the Wireless SSID
+    echo
     echo -n "Enter the Wireless SSID: "
     read ssid
 
@@ -61,7 +62,7 @@
     sudo apt-get upgrade -y
 
     # Install stuff we need
-    sudo apt-get install x11-xserver-utils unclutter
+    sudo apt-get install x11-xserver-utils unclutter -y
 
     # Install Chromium (cannot install using apt-get)
     wget http://ports.ubuntu.com/pool/universe/c/chromium-browser/chromium-browser-l10n_48.0.2564.82-0ubuntu0.15.04.1.1193_all.deb
@@ -71,6 +72,17 @@
     sudo dpkg -i chromium-browser-l10n_48.0.2564.82-0ubuntu0.15.04.1.1193_all.deb chromium-browser_48.0.2564.82-0ubuntu0.15.04.1.1193_armhf.deb
     sudo apt-get chromium-browser install -y
 
+    # Install Apache
+    sudo apt-get install apache2 -y
+
+    sleep 5s
+
+    # Install PHP
+    sudo apt-get install php5 libapache2-mod-php5 -y
+
+    # Install VNC (Good for troubleshooting)
+    sudo apt-get install tightvncserver -y
+
 # ============================================================
 #     Create Some Files (we'll use them later)
 # ============================================================
@@ -78,7 +90,7 @@
     # dashboard.sh - this launches the browser. The URL here is a placeholder to load something to start.
     dbpath='/home/pi/dashboard.sh'
     sudo echo '# start / restart the browser' >> $dbpath
-    sudo echo 'chromium-browser --display=:0 --noerrdialogs --kiosk https://pisarada.ddns.net --incognito' >> $dbpath
+    sudo echo 'chromium-browser --display=:0 --noerrdialogs --no-first-run --kiosk http://www.google.com --incognito' >> $dbpath
 
 # ============================================================
 #     Modify the Startup
@@ -92,7 +104,7 @@
     sudo echo '@xset s off' >> $autostart
     sudo echo '@xset -dpms' >> $autostart
     sudo echo '@xset s noblank' >> $autostart
-    sudo echo '@/home/pi/dashboard.sh' >> $autostart
+    sudo echo '@sh /home/pi/dashboard.sh' >> $autostart
 
     sudo chown pi:pi $autostart
 
@@ -138,5 +150,8 @@
     sudo chown pi:pi /home/pi/dashboard.sh
     sudo chown -R pi:pi /var/www/html
 
-    # This allows connections from everywhere, if this is to be publicly available this should definitely not be here.
-    sudo -u pi xhost +
+    echo
+    echo 'You need to run the following as the Pi user:'
+    echo 'export DISPLAY=:0'
+    echo 'xhost +'
+    echo
