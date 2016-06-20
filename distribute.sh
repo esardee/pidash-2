@@ -6,3 +6,5 @@
 cp * -R /var/www/html/
 cd /var/www/html
 chmod 777 * -R
+
+# Test commit
