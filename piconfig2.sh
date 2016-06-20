@@ -119,21 +119,6 @@
     sudo git clone https://github.com/esardee/pidash-2 /var/www/html
 
 # ============================================================
-#     Add a CRON job
-# ============================================================
-
-    # Write out current tab
-    crontab -l > mycron
-
-    # Echo new cron into cron file
-    # Run a 'git pull' every hour for any code changes
-    echo "0 * * * * cd /var/www/html && sudo git pull" >> mycron
-
-    # Install new cron file
-    crontab mycron
-    rm mycron
-
-# ============================================================
 #     Modify Permissions
 # ============================================================
 
@@ -154,4 +139,9 @@
     echo 'You need to run the following as the Pi user:'
     echo 'export DISPLAY=:0'
     echo 'xhost +'
+    echo
+    echo 'crontab -l > mycron'
+    echo '"0 * * * * cd /var/www/html && sudo git pull" >> mycron' 
+    echo 'crontab mycron'
+    echo 'rm mycron'
     echo
