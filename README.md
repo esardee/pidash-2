@@ -27,13 +27,9 @@ To start this you need to install Raspbian Jessie. Do this by doing the followin
 
   `ssh pi@<ip address>`
 
-6. Run the following:  
+6. Run the following. You will be asked to enter some WiFi information at the start:  
 
-  `curl https://raw.githubusercontent.com/esardee/pidash-2/master/piconfig2.sh > /home/pi/install.sh`
-
-7. Then run the following. You will be asked to enter some WiFi information at the start.
-
-  `sudo sh /home/pi/install.sh`
+  `curl https://raw.githubusercontent.com/esardee/pidash-2/master/piconfig2.sh > /home/pi/install.sh && sudo sh /home/pi/install.sh`
 
 8. Once that is complete, follow the instructions on screen and run the following:
 
