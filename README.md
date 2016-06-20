@@ -42,3 +42,17 @@ To start this you need to install Raspbian Jessie. Do this by doing the followin
   `sudo reboot`
 
 10. Once restarted, you should have a browser loading on the screen. You can browse to the Pi's internal IP address and update the URL from there.
+
+# Increasing Performance 
+If you find the Pi's performance is lagging you can modify the config. 
+
+1. Enter the following command:
+
+	`sudo raspi-config`
+	
+2. From Advanced Settings, make the following modifications:
+	* Update Raspi Config tool	
+	* Disable Overscan
+	* Memory Split (128MB)
+	
+	
