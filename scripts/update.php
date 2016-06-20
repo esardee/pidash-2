@@ -13,7 +13,7 @@ if (!empty($url)) {
 
     $newConfig = fopen("/home/pi/dashboard.sh", "w") or die("Unable to open file!") ;
 
-    $txt = '# start / restart the browser' . PHP_EOL . 'chromium-browser --display=:0 --noerrdialogs --kiosk ' . $url . ' --incognito' . PHP_EOL ;
+    $txt = '# start / restart the browser' . PHP_EOL . 'chromium-browser --display=:0 --noerrdialogs --no-first-run --kiosk ' . $url . ' --incognito' . PHP_EOL ;
 
     fwrite($newConfig, $txt) ;
     fclose($newConfig) ;
