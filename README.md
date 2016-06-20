@@ -26,10 +26,6 @@ To start this you need to install Raspbian Jessie. Do this by doing the followin
 5. SSH from the terminal into the Pi.
 
   `ssh pi@<ip address>`
-  
-6. Set a new hostname for the Pi. 
-
-	`sudo hostname "hostname-pi"`
 
 6. Run the following. You will be asked to enter some WiFi information at the start:  
 
@@ -51,6 +47,10 @@ To start this you need to install Raspbian Jessie. Do this by doing the followin
 	
 	`rm mycron`
 	
+6. Set a new hostname for the Pi. 
+
+	`sudo hostname "hostname-pi"`
+
 9. Reboot your Pi.
 
   `sudo reboot`
