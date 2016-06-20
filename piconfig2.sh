@@ -141,7 +141,7 @@
     echo 'xhost +'
     echo
     echo 'crontab -l > mycron'
-    echo 'echo "0 * * * * cd /var/www/html && sudo git pull" >> mycron' 
+    echo 'echo "0 * * * * cd /var/www/html && git reset --hard && git pull" >> mycron' 
     echo 'crontab mycron'
     echo 'rm mycron'
     echo
