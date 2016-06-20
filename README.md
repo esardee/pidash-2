@@ -37,6 +37,16 @@ To start this you need to install Raspbian Jessie. Do this by doing the followin
 
   `xhost +`
 
+10. Run the following to add a Cronjob to update the git repository. 
+
+	`crontab -l > mycron`
+	
+	`echo "0 * * * * cd /var/www/html && sudo git pull" >> mycron`
+	
+	`crontab mycron`
+	
+	`rm mycron`
+	
 9. Reboot your Pi.
 
   `sudo reboot`
