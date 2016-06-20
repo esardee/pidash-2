@@ -19,9 +19,9 @@ To start this you need to install Raspbian Jessie. Do this by doing the followin
 
 4. Unmount the SD card and remove then reinsert into Pi.
 
-`diskutil unmountDisk /dev/disk<num>`
-
-  *where <num> is the disk number of the SD card.*
+	`diskutil unmountDisk /dev/disk<num>`
+	
+	*where <num> is the disk number of the SD card.*
 
 5. SSH from the terminal into the Pi.
 
