@@ -26,6 +26,16 @@ To start this you need to install Raspbian Jessie. Do this by doing the followin
 5. SSH from the terminal into the Pi.
 
   `ssh pi@<ip address>`
+  
+6. Set a new hostname for the Pi. 
+
+	`sudo -i`
+	
+	`echo "hostname-pi" > /etc/hostname`
+
+9. Reboot your Pi.
+
+  `sudo reboot`
 
 6. Run the following. You will be asked to enter some WiFi information at the start:  
 
@@ -46,12 +56,6 @@ To start this you need to install Raspbian Jessie. Do this by doing the followin
 	`crontab mycron`
 	
 	`rm mycron`
-	
-6. Set a new hostname for the Pi. 
-
-	`sudo -i`
-	
-	`echo "hostname-pi" > /etc/hostname`
 
 9. Reboot your Pi.
 
