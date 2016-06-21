@@ -31,7 +31,9 @@ To start this you need to install Raspbian Jessie. Do this by doing the followin
 
 	`sudo -i`
 	
-	`echo "hostname-pi" > /etc/hostname`
+	`echo "<hostname>" > /etc/hostname` - where <hostname> is the new hostname of the Pi.
+	
+	`sed -i "s/raspberrypi/<hostname>/" /etc/hosts` - where <hostname> is the new hostname of the Pi.
 
 9. Reboot your Pi.
 
