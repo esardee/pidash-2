@@ -44,8 +44,8 @@
         # Update the wpa_supplicant.conf file with the above information
         wpaconf='/etc/wpa_supplicant/wpa_supplicant.conf'
         sudo echo 'network={' >> $wpaconf
-        sudo echo 'ssid="' $ssid '"' >> $wpaconf
-        sudo echo 'psk="' $psk '"' >> $wpaconf
+        sudo echo 'ssid="'$ssid'"' >> $wpaconf
+        sudo echo 'psk="'$psk'"' >> $wpaconf
         sudo echo '}' >> $wpaconf
 
         # Replace manual with DHCP in /etc/network/interfaces
