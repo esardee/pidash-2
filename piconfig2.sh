@@ -28,30 +28,25 @@
 #     Configure the internetz
 # ============================================================
 
-    # Get the Wireless SSID
+    # Get the Password for ANS-Secure
     echo
-    echo -n "Enter the Wireless SSID: "
-    read ssid
+    echo -n "Enter the password for ANS-Secure: "
+    read psk
 
-    # Don't ask for the PSK if no SSID was entered.
-    if [ -z $ssid ]
+    if [ -z $psk ]
     then
-        echo "SSID was not entered, skipping."
+      echo "PSK is empty, skipping."
     else
-        echo -n "Enter the Wireless Password: "
-        read psk
+      # Update the wpa_supplicant.conf file with the above information
+      wpaconf='/etc/wpa_supplicant/wpa_supplicant.conf'
+      sudo echo 'network={' >> $wpaconf
+      sudo echo 'ssid="ANS-Secure"' >> $wpaconf
+      sudo echo 'psk="' $psk '"' >> $wpaconf
+      sudo echo '}' >> $wpaconf
 
-        # Update the wpa_supplicant.conf file with the above information
-        wpaconf='/etc/wpa_supplicant/wpa_supplicant.conf'
-        sudo echo 'network={' >> $wpaconf
-        sudo echo 'ssid="' $ssid '"' >> $wpaconf
-        sudo echo 'psk="' $psk '"' >> $wpaconf
-        sudo echo '}' >> $wpaconf
-
-        # Replace manual with DHCP in /etc/network/interfaces
-        sudo sed -i "s/iface wlan0 inet manual/iface wlan0 inet dhcp/" /etc/network/interfaces
-
-    fi
+      # Replace manual with DHCP in /etc/network/interfaces
+      sudo sed -i "s/iface wlan0 inet manual/iface wlan0 inet dhcp/" /etc/network/interfaces
+  fi
 
 # ============================================================
 #     Install the things
@@ -141,7 +136,7 @@
     echo 'xhost +'
     echo
     echo 'crontab -l > mycron'
-    echo 'echo "0 * * * * cd /var/www/html && git reset --hard && git pull" >> mycron' 
+    echo 'echo "0 * * * * cd /var/www/html && git reset --hard && git pull" >> mycron'
     echo 'crontab mycron'
     echo 'rm mycron'
     echo
