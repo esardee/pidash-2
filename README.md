@@ -8,7 +8,7 @@ To start this you need to install Raspbian Jessie. Do this by doing the followin
 2. Unmount the disk:
 
   `diskutil unmountDisk /dev/disk<num>`
-  
+
   *where <num> is the disk number of the SD card.*
 
 3. Write the image file onto the SD card (30 minutes)
@@ -20,19 +20,19 @@ To start this you need to install Raspbian Jessie. Do this by doing the followin
 4. Unmount the SD card and remove then reinsert into Pi.
 
 	`diskutil unmountDisk /dev/disk<num>`
-	
+
 	*where <num> is the disk number of the SD card.*
 
 5. SSH from the terminal into the Pi.
 
   `ssh pi@<ip address>`
-  
-6. Set a new hostname for the Pi. 
+
+6. Set a new hostname for the Pi.
 
 	`sudo -i`
-	
+
 	`echo "<hostname>" > /etc/hostname` - where <hostname> is the new hostname of the Pi.
-	
+
 	`sed -i "s/raspberrypi/<hostname>/" /etc/hosts` - where <hostname> is the new hostname of the Pi.
 
 9. Reboot your Pi.
@@ -49,14 +49,14 @@ To start this you need to install Raspbian Jessie. Do this by doing the followin
 
   `xhost +`
 
-10. Run the following to add a Cronjob to update the git repository. 
+10. Run the following to add a Cronjob to update the git repository.
 
 	`crontab -l > mycron`
-	
+
 	`echo "0 * * * * cd /var/www/html && sudo git pull" >> mycron`
-	
+
 	`crontab mycron`
-	
+
 	`rm mycron`
 
 9. Reboot your Pi.
@@ -65,16 +65,14 @@ To start this you need to install Raspbian Jessie. Do this by doing the followin
 
 10. Once restarted, you should have a browser loading on the screen. You can browse to the Pi's internal IP address and update the URL from there.
 
-# Increasing Performance 
-If you find the Pi's performance is lagging you can modify the config. 
+# Increasing Performance
+If you find the Pi's performance is lagging you can modify the config.
 
 1. Enter the following command:
 
 	`sudo raspi-config`
-	
+
 2. From Advanced Settings, make the following modifications:
-	* Update Raspi Config tool	
+	* Update Raspi Config tool
 	* Disable Overscan
 	* Memory Split (128MB)
-	
-	
